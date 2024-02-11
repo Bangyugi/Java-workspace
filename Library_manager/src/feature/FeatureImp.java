@@ -10,9 +10,8 @@ import data_access_object.BookDAO;
 import database.JDBCUtil;
 import model.Account;
 
-
 public class FeatureImp implements Feature {
-	
+
 	static Scanner scan = new Scanner(System.in);
 
 	@Override
@@ -70,8 +69,6 @@ public class FeatureImp implements Feature {
 		}
 	}
 
-
-
 	public void FindByNamePage() {
 		while (true) {
 			System.out.print("\033[H\033[2J");
@@ -112,6 +109,161 @@ public class FeatureImp implements Feature {
 			}
 		}
 	}
+
+	public void FindByCategoryNamePage() {
+		while (true) {
+			System.out.print("\033[H\033[2J");
+			System.out.flush();
+			System.out.println();
+			System.out.printf("+%100s+\n", "-".repeat(100));
+			System.out.printf("|%s%60s%40s|\n", "", "LIBRARY MANAGEMENT SYSTEM", "");
+			System.out.printf("+%100s+\n", "-".repeat(100));
+			System.out.printf("|%3s%-10s%-10s%-12s%-10s%-10s%45s|\n", " ", "(H)HOME", "(B)BOOKS", "(P)PAPERS",
+					"(A)ABOUT", "(E)HELP", "");
+			System.out.printf("+%100s+\n", "-".repeat(100));
+			System.out.printf("|%100s|\n", " ".repeat(100));
+			System.out.printf("|%100s|\n", " ".repeat(100));
+			System.out.printf("|%100s|\n", " ".repeat(100));
+			System.out.printf("|%16s+-----------------------------------------------------------+------+%16s|\n", " ",
+					" ");
+			System.out.printf("|%16s|    (E) Enter keywords                                     |      |%16s|\n", " ",
+					" ");
+			System.out.printf("|%16s+-----------------------------------------------------------+------+%16s|\n", " ",
+					" ");
+			System.out.printf("|%100s|\n", " ".repeat(100));
+			System.out.printf("|%100s|\n", " ".repeat(100));
+			System.out.printf("|%100s|\n", " ".repeat(100));
+			System.out.printf("|%80s%-20s|\n", " ", "(R) Return ->");
+			System.out.printf("+%100s+\n", "-".repeat(100));
+			System.out.print("Enter your choice: ");
+			char choice = scan.nextLine().charAt(0);
+			switch (choice) {
+				case 'E': {
+					BookDAO.getInstance().displayByCategory();
+					break;
+				}
+				case 'R': {
+					return;
+				}
+				default:
+					break;
+			}
+		}
+	}
+
+	public void FindByYearPage() {
+		while (true) {
+			System.out.print("\033[H\033[2J");
+			System.out.flush();
+			System.out.println();
+			System.out.printf("+%100s+\n", "-".repeat(100));
+			System.out.printf("|%s%60s%40s|\n", "", "LIBRARY MANAGEMENT SYSTEM", "");
+			System.out.printf("+%100s+\n", "-".repeat(100));
+			System.out.printf("|%3s%-10s%-10s%-12s%-10s%-10s%45s|\n", " ", "(H)HOME", "(B)BOOKS", "(P)PAPERS",
+					"(A)ABOUT", "(E)HELP", "");
+			System.out.printf("+%100s+\n", "-".repeat(100));
+			System.out.printf("|%100s|\n", " ".repeat(100));
+			System.out.printf("|%100s|\n", " ".repeat(100));
+			System.out.printf("|%100s|\n", " ".repeat(100));
+			System.out.printf("|%16s+-----------------------------------------------------------+------+%16s|\n", " ",
+					" ");
+			System.out.printf("|%16s|%4s%-55s|%6s|%16s|\n", " ", " ", "(E) Enter Year", " ",
+					" ");
+			System.out.printf("|%16s+-----------------------------------------------------------+------+%16s|\n", " ",
+					" ");
+			System.out.printf("|%100s|\n", " ".repeat(100));
+			System.out.printf("|%100s|\n", " ".repeat(100));
+			System.out.printf("|%100s|\n", " ".repeat(100));
+			System.out.printf("|%80s%-20s|\n", " ", "(R) Return ->");
+			System.out.printf("+%100s+\n", "-".repeat(100));
+			System.out.print("Enter your choice: ");
+			char choice = scan.nextLine().charAt(0);
+			switch (choice) {
+				case 'E': {
+					BookDAO.getInstance().displayByYear();
+					break;
+				}
+				case 'R': {
+					return;
+				}
+				default:
+					break;
+			}
+		}
+	}
+
+	public void FindByAuthorNamePage() {
+		while (true) {
+			System.out.print("\033[H\033[2J");
+			System.out.flush();
+			System.out.println();
+			System.out.printf("+%100s+\n", "-".repeat(100));
+			System.out.printf("|%s%60s%40s|\n", "", "LIBRARY MANAGEMENT SYSTEM", "");
+			System.out.printf("+%100s+\n", "-".repeat(100));
+			System.out.printf("|%3s%-10s%-10s%-12s%-10s%-10s%45s|\n", " ", "(H)HOME", "(B)BOOKS", "(P)PAPERS",
+					"(A)ABOUT", "(E)HELP", "");
+			System.out.printf("+%100s+\n", "-".repeat(100));
+			System.out.printf("|%100s|\n", " ".repeat(100));
+			System.out.printf("|%100s|\n", " ".repeat(100));
+			System.out.printf("|%100s|\n", " ".repeat(100));
+			System.out.printf("|%16s+-----------------------------------------------------------+------+%16s|\n", " ",
+					" ");
+			System.out.printf("|%16s|%4s%-55s|%6s|%16s|\n", " ", " ", "(E) Enter information", " ",
+					" ");
+			System.out.printf("|%16s+-----------------------------------------------------------+------+%16s|\n", " ",
+					" ");
+			System.out.printf("|%100s|\n", " ".repeat(100));
+			System.out.printf("|%100s|\n", " ".repeat(100));
+			System.out.printf("|%100s|\n", " ".repeat(100));
+			System.out.printf("|%80s%-20s|\n", " ", "(R) Return ->");
+			System.out.printf("+%100s+\n", "-".repeat(100));
+			System.out.print("Enter your choice: ");
+			char choice = scan.nextLine().charAt(0);
+			switch (choice) {
+				case 'E': {
+					System.out.print("\033[H\033[2J");
+					System.out.flush();
+					System.out.println();
+					System.out.printf("+%100s+\n", "-".repeat(100));
+					System.out.printf("|%s%60s%40s|\n", "", "LIBRARY MANAGEMENT SYSTEM", "");
+					System.out.printf("+%100s+\n", "-".repeat(100));
+					System.out.printf("|%3s%-10s%-10s%-12s%-10s%-10s%45s|\n", " ", "(H)HOME", "(B)BOOKS", "(P)PAPERS",
+							"(A)ABOUT", "(E)HELP", "");
+					System.out.printf("+%100s+\n", "-".repeat(100));
+					System.out.printf("|%100s|\n", " ".repeat(100));
+					System.out.printf("|%100s|\n", " ".repeat(100));
+					System.out.printf(
+							"|%16s+------------------------------------------------------------------+%16s|\n", " ",
+							" ");
+					System.out.printf("|%16s|%4s%-62s|%16s|\n", " ", " ", "Enter author's first name", " ",
+							" ");
+					System.out.printf(
+							"|%16s+------------------------------------------------------------------+%16s|\n", " ",
+							" ");
+					System.out.printf(
+							"|%16s+------------------------------------------------------------------+%16s|\n", " ",
+							" ");
+					System.out.printf("|%16s|%4s%-62s|%16s|\n", " ", " ", "Enter author's second name", " ",
+							" ");
+					System.out.printf(
+							"|%16s+------------------------------------------------------------------+%16s|\n", " ",
+							" ");
+					System.out.printf("|%100s|\n", " ".repeat(100));
+					System.out.printf("|%100s|\n", " ".repeat(100));
+					System.out.printf("|%100s|\n", " ".repeat(100));
+					System.out.printf("+%100s+\n", "-".repeat(100));
+					BookDAO.getInstance().displayByAuthor();
+					break;
+				}
+				case 'R': {
+					return;
+				}
+				default:
+					break;
+			}
+		}
+	}
+
 	public void AddBookPage() {
 		while (true) {
 			System.out.print("\033[H\033[2J");
@@ -170,6 +322,7 @@ public class FeatureImp implements Feature {
 			}
 		}
 	}
+
 	public void FindBookPage() {
 		while (true) {
 			System.out.print("\033[H\033[2J");
@@ -212,19 +365,20 @@ public class FeatureImp implements Feature {
 					break;
 				}
 				case '2': {
-					FindBookPage();
+					FindByYearPage();
 					break;
 				}
 				case '3': {
-					BookDAO.getInstance().showAll();
-					
+					FindByCategoryNamePage();
+
 					break;
 				}
 				case '4': {
-					
+
 					break;
 				}
 				case '5': {
+					FindByAuthorNamePage();
 					break;
 				}
 				case '6': {
@@ -288,7 +442,7 @@ public class FeatureImp implements Feature {
 				}
 				case '3': {
 					BookDAO.getInstance().showAll();
-					
+
 					break;
 				}
 				case '4': {
@@ -311,8 +465,6 @@ public class FeatureImp implements Feature {
 			}
 		}
 	}
-
-	
 
 	public void MemberPage() {
 		while (true) {
@@ -595,5 +747,4 @@ public class FeatureImp implements Feature {
 		}
 	}
 
-	
 }

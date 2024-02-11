@@ -17,5 +17,7 @@ public interface Feature {
 
 	public void FindByNamePage();
 
+	public void FindByAuthorNamePage();
+
 	public void AddBookPage();
 }
