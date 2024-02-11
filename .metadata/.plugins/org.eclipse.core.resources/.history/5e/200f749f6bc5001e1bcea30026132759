@@ -1,0 +1,61 @@
+package model;
+
+import java.util.Scanner;
+
+import org.jcp.xml.dsig.internal.MacOutputStream;
+
+public class Account {
+	int id;
+	String userName;
+	String passWord;
+
+	public Account() {
+		super();
+	}
+
+	public Account(int id, String userName, String passWord) {
+		super();
+		this.id = id;
+		this.userName = userName;
+		this.passWord = passWord;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getPassWord() {
+		return passWord;
+	}
+
+	public void setPassWord(String passWord) {
+		this.passWord = passWord;
+	}
+	Scanner scanner = new Scanner(System.in);
+	public void input()
+	{
+		System.out.print("Enter username: ");
+		this.userName = scanner.nextLine();
+		System.out.print("Enter password: ");
+		this.passWord = scanner.nextLine();
+		System.out.println();
+	}
+	
+	@Override
+	public String toString() {
+		return "Account [id=" + id + ", userName=" + userName + ", passWord=" + passWord + "]";
+	}
+
+}

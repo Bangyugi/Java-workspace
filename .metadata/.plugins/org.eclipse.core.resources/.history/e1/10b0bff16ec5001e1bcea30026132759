@@ -1,0 +1,9 @@
+package testMain;
+
+
+
+public class ClearConsole {
+	 public static void main(string... arg) {
+	        new processbuilder("cmd", "/c", "cls").inheritio().start().waitfor();
+	    }
+}

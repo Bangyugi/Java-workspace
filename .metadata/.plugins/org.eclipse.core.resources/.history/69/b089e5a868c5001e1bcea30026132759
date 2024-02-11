@@ -1,0 +1,88 @@
+package model;
+
+import java.sql.Date;
+
+public class Book {
+	int id;
+	String title;
+	int category_id;
+	Date publication_date;
+	int copies_owned;
+	
+	
+	public Book() {
+	}
+	
+	
+
+	public Book(int id, String title, int category_id, Date publication_date, int copies_owned) {
+		this.id = id;
+		this.title = title;
+		this.category_id = category_id;
+		this.publication_date = publication_date;
+		this.copies_owned = copies_owned;
+	}
+
+
+
+	public int getId() {
+		return id;
+	}
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
+	public String getTitle() {
+		return title;
+	}
+
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+
+	public int getCategory_id() {
+		return category_id;
+	}
+
+
+	public void setCategory_id(int category_id) {
+		this.category_id = category_id;
+	}
+
+
+	public Date getPublication_date() {
+		return publication_date;
+	}
+
+
+	public void setPublication_date(Date publication_date) {
+		this.publication_date = publication_date;
+	}
+
+
+	public int getCopies_owned() {
+		return copies_owned;
+	}
+
+
+	public void setCopies_owned(int copies_owned) {
+		this.copies_owned = copies_owned;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "Book [id=" + id + ", title=" + title + ", category_id=" + category_id + ", publication_date="
+				+ publication_date + ", copies_owned=" + copies_owned + "]";
+	}
+	
+	
+	
+	
+}

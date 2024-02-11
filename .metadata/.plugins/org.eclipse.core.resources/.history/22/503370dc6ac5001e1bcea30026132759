@@ -1,0 +1,39 @@
+package feature;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import database.JDBCUtil;
+import model.Account;
+
+public class FeatureImp implements Feature {
+
+	@Override
+	public void login() {
+		while (true) {
+			try {
+				Connection connection = JDBCUtil.getConnection();
+				Account account = new Account();
+				account.input();
+				String queryString = "SELECT * FROM Account WHERE userName = ? AND passWord = ?;";
+				PreparedStatement preparedStatement = connection.prepareStatement(queryString);
+				preparedStatement.setString(1, account.getUserName());
+				preparedStatement.setString(2, account.getPassWord());
+				ResultSet resultSet = preparedStatement.executeQuery();
+				if (resultSet.next()) {
+					System.out.println("Access accepted!");
+					JDBCUtil.closeConnection(connection);
+					break;
+				} else {
+					JDBCUtil.closeConnection(connection);
+					throw new SQLException("Wrong username or password!");
+				}
+			} catch (SQLException e) {
+				e.getMessage();
+			}
+		}
+	}
+
+}

@@ -1,0 +1,24 @@
+package testMain;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+
+import database.JDBCUtil;
+
+public class Main {
+	public static void main(String[] args) {
+		Connection connection;
+		try {
+			connection = JDBCUtil.getConnection();
+			if (connection!=null)
+			{
+				System.out.println("Access accepted!");
+			}
+			else {
+				System.out.println("Access denied!");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+}

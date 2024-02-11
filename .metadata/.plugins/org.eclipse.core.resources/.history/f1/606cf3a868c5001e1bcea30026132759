@@ -1,0 +1,31 @@
+package model;
+
+import java.sql.Date;
+
+public class Fine {
+	int id;
+	int member_id;
+	int loan_id;
+	Date fine_Date;
+	int fine_Amount;
+	
+	public Fine() {
+	}
+
+	public Fine(int id, int member_id, int loan_id, Date fine_Date, int fine_Amount) {
+		super();
+		this.id = id;
+		this.member_id = member_id;
+		this.loan_id = loan_id;
+		this.fine_Date = fine_Date;
+		this.fine_Amount = fine_Amount;
+	}
+	
+
+	@Override
+	public String toString() {
+		return "Fine [id=" + id + ", member_id=" + member_id + ", loan_id=" + loan_id + ", fine_Date=" + fine_Date
+				+ ", fine_Amount=" + fine_Amount + "]";
+	}
+	
+}

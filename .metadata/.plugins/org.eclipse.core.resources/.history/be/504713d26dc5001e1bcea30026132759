@@ -1,0 +1,52 @@
+package feature;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import database.JDBCUtil;
+import model.Account;
+
+
+public class FeatureImp implements Feature {
+	public void clearConsole() {
+	    try {
+	        if (System.getProperty("os.name").contains("Windows")) {
+	            new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+	        } else {
+	            new ProcessBuilder("bash", "-c", "clear").inheritIO().start().waitFor();
+	        }
+	    } catch (Exception e) {
+	        System.out.println("Clearing console failed: " + e.getMessage());
+	    }
+	}
+
+	@Override
+	public void login() {
+		while (true) {
+			try {
+				clearConsole();
+				Connection connection = JDBCUtil.getConnection();
+				Account account = new Account();
+				account.input();
+				String queryString = "SELECT * FROM Account WHERE userName = ? AND passWord = ?;";
+				PreparedStatement preparedStatement = connection.prepareStatement(queryString);
+				preparedStatement.setString(1, account.getUserName());
+				preparedStatement.setString(2, account.getPassWord());
+				ResultSet resultSet = preparedStatement.executeQuery();
+				if (resultSet.next()) {
+					System.out.println("Access accepted!");
+					JDBCUtil.closeConnection(connection);
+					break;
+				} else {
+					JDBCUtil.closeConnection(connection);
+					throw new SQLException("Wrong username or password!\n");
+				}
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+	}
+
+}

@@ -1,0 +1,26 @@
+	package testMain;
+
+import java.io.IOException;
+
+public class ClearScreen {
+	    public static void main(String[] args) {
+	        System.out.println("Hello World");
+	        clearConsole();
+	        System.out.println("I'm Bang");
+	    }
+	
+	    public static void clearConsole() {
+	        try {
+	            if (System.getProperty("os.name").contains("Windows")) {
+	                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+	            } else {
+	                // Other operating systems
+	                System.out.print("\033[H\033[2J");
+	                System.out.flush();
+	            }
+	        } catch (IOException | InterruptedException e) {
+	            System.out.println("Error clearing console: " + e.getMessage());
+	        }
+	    }
+
+	}

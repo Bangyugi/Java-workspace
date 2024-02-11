@@ -1,0 +1,42 @@
+package testMain;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+
+import database.JDBCUtil;
+
+public class Main {
+	public static void main(String[] args) {
+		try {
+			Connection connection = JDBCUtil.getConnection();
+			if (connection!=null)
+			{
+				System.out.println("Access accepted!");
+			}
+			else {
+				System.out.println("Access denied!");
+			}
+		Statement statement = connection.createStatement();
+		String queryString = "SELECT B.id,B.title,C.category_name,B.publication_date,B.copies_owned FROM Book as B INNER JOIN Category as C ON B.category_id = C.id ORDER BY B.id;";
+		ResultSet resultSet =statement.executeQuery(queryString);
+		while (resultSet.next())
+		{
+			System.out.println("----------------------");
+			System.out.println("Id: " + resultSet.getInt("id"));
+			System.out.println("Tittle: " + resultSet.getString("title"));
+			System.out.println("Category: " + resultSet.getString("category_name"));
+			System.out.println("Publication date: " + resultSet.getDate("publication_date"));	
+			System.out.println("Copies owned: " + resultSet.getInt("copies_owned"));
+			System.out.println();
+		}
+		
+		JDBCUtil.closeConnection(connection);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+}

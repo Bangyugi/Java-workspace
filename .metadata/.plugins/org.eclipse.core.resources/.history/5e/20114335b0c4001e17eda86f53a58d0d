@@ -1,0 +1,40 @@
+package model;
+
+public class Author {
+	int id;
+	String fNameString;
+	
+	
+	
+	public Author() {
+		super();
+	}
+
+	public Author(int id, String fNameString) {
+		super();
+		this.id = id;
+		this.fNameString = fNameString;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getfNameString() {
+		return fNameString;
+	}
+
+	public void setfNameString(String fNameString) {
+		this.fNameString = fNameString;
+	}
+
+	@Override
+	public String toString() {
+		return "Author [id=" + id + ", fNameString=" + fNameString + "]";
+	}
+	
+}
