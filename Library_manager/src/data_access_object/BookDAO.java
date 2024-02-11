@@ -115,7 +115,7 @@ public class BookDAO {
 
     }
 
-    public void showAll() {
+    public void displayAll() {
         try {
             boolean flag = true;
             while (flag) {
@@ -178,6 +178,64 @@ public class BookDAO {
                         break;
                 }
             }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void displayWithId() {
+        try {
+
+            Connection connection = JDBCUtil.getConnection();
+            String query = "select B.id as Book_id, B.title, C.category_name, B.publication_date, B.copies_owned,A.id as Author_id, A.fname, A.lname from Book as B \n"
+                    + //
+                    "inner join Category as C on B.Category_id = C.id\n" + //
+                    "inner join Book_Author as BA on B.id = BA.Book_id\n" + //
+                    "inner join Author as A on A.id = BA.Author_id\n" + //
+                    "order by B.title;";
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery(query);
+            System.out.print("\033[H\033[2J");
+            System.out.flush();
+            System.out.println();
+            System.out.printf("+%126s+\n", "-".repeat(126));
+            System.out.printf("|%s%70s%56s|\n", "", "LIBRARY MANAGEMENT SYSTEM", "");
+            System.out.printf("+%126s+\n", "-".repeat(126));
+            System.out.printf("|%3s%-10s%-10s%-12s%-10s%-10s%71s|\n", " ", "(H)HOME", "(B)BOOKS", "(P)PAPERS",
+                    "(A)ABOUT", "(E)HELP", "");
+            System.out.printf("+%126s+\n", "-".repeat(126));
+            System.out.printf("|%126s|\n", " ".repeat(126));
+            System.out.printf("|%3s+%-12s+%-53s+%-28s+%-22s+%3s|\n", " ", "-".repeat(12), "-".repeat(53),
+                    "-".repeat(28),
+                    "-".repeat(22), "");
+            System.out.printf("|%3s| %-10s | %-51s | %-26s | %-20s |%3s|\n", " ", "ID", "Title", "Author",
+                    "Category", "");
+            System.out.printf("|%3s+%-12s+%-53s+%-28s+%-22s+%3s|\n", " ", "-".repeat(12), "-".repeat(53),
+                    "-".repeat(28),
+                    "-".repeat(22), "");
+
+            while (rs.next()) {
+
+                String title = rs.getString("title");
+                String categoryName = rs.getString("category_name");
+                int id = rs.getInt("Book_id");
+                String fName = rs.getString("fname");
+                String lName = rs.getString("lname");
+                System.out.printf("|%3s| %-10s | %-51s | %-26s | %-20s |%3s|\n", " ", id, title,
+                        fName + " " + lName,
+                        categoryName, "");
+
+            }
+            System.out.printf("|%3s+%-12s+%-53s+%-28s+%-22s+%3s|\n", " ", "-".repeat(12), "-".repeat(53),
+                    "-".repeat(28),
+                    "-".repeat(22), "");
+
+            System.out.printf("|%126s|\n", " ".repeat(126));
+            System.out.printf("|%126s|\n", " ".repeat(126));
+            System.out.printf("|%106s%-20s|\n", " ", "(R) Return ->");
+            System.out.printf("+%126s+\n", "-".repeat(126));
+            JDBCUtil.closeConnection(connection);
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -405,6 +463,7 @@ public class BookDAO {
             e.printStackTrace();
         }
     }
+
     public void displayByYear() {
         try {
             boolean flag = true;
@@ -418,7 +477,7 @@ public class BookDAO {
                         "inner join Category as C on B.Category_id = C.id\n" + //
                         "inner join Book_Author as BA on B.id = BA.Book_id\n" + //
                         "inner join Author as A on A.id = BA.Author_id\n" + //
-                        "Where year(publication_date) like '"+year+"%'" + //
+                        "Where year(publication_date) like '" + year + "%'" + //
                         "order by B.title;";
                 Statement statement = connection.createStatement();
 
@@ -472,6 +531,85 @@ public class BookDAO {
                 }
             }
 
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void MultipleRemove() {
+        try {
+            displayWithId();
+            Connection connection = JDBCUtil.getConnection();
+            String bookQuery = "Delete from Book where id in ( ";
+            String bookAuthorQuery = "Delete from Book_Author where book_id in ( ";
+            System.out.print("Enter the number of books you want to delete: ");
+            int amount = scan.nextInt();
+            for (int i = 0; i < amount; i++) {
+                System.out.print("Enter book's id: ");
+                int id = scan.nextInt();
+                if (i == 0) {
+                    bookQuery = bookQuery + id;
+                    bookAuthorQuery = bookAuthorQuery + id;
+                } else {
+                    bookQuery = bookQuery + ", " + id;
+                    bookAuthorQuery = bookAuthorQuery + ", " + id;
+                }
+            }
+            scan.nextLine();
+            bookQuery += ")";
+            bookAuthorQuery += ")";
+            Statement statement = connection.createStatement();
+            int row = 0;
+            statement.executeUpdate(bookAuthorQuery);
+            row += statement.executeUpdate(bookQuery);
+            if (row > 0) {
+                System.out.println("Remove successfull!");
+                System.out.println(row + " rows affected");
+            } else {
+                System.out.println("Remove fail!");
+            }
+            try {
+                Thread.sleep(700);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            JDBCUtil.closeConnection(connection);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void SpecificRemove() {
+        try {
+            Connection connection = JDBCUtil.getConnection();
+            System.out.print("Enter book's title: ");
+            String title = scan.nextLine();
+            String bookQuery = "Delete from Book where title = ?";
+            String bookAuthorQuery = "Delete from Book_Author where book_id =  (select id from Book where title = ?);";
+
+            PreparedStatement psBook = connection.prepareStatement(bookQuery);
+            PreparedStatement psAuthorBook = connection.prepareStatement(bookAuthorQuery);
+            psBook.setString(1, title);
+            psAuthorBook.setString(1, title);
+            System.out.println(bookQuery);
+            System.out.println(bookAuthorQuery);
+            int row = 0;
+            psAuthorBook.executeUpdate();
+            row += psBook.executeUpdate();
+            if (row > 0) {
+                System.out.println("Remove successfull!");
+                System.out.println(row + " rows affected");
+            } else {
+                System.out.println("Remove fail!");
+            }
+            try {
+                Thread.sleep(700);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            JDBCUtil.closeConnection(connection);
         } catch (SQLException e) {
             e.printStackTrace();
         }

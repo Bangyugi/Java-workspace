@@ -346,15 +346,10 @@ public class FeatureImp implements Feature {
 			System.out.printf("|%10s%32s%16s%32s%10s|\n", " ", "+" + "-".repeat(30) + "+", " ",
 					"+" + "-".repeat(30) + "+", " ");
 			System.out.printf("|%10s%-7s%-24s%s%16s%-7s%-24s%s%10s|\n", " ", "|", "(3) Find by Category", "|", " ",
-					"|", "(4) Find by id", "|", " ");
+					"|", "(4) Find by author", "|", " ");
 			System.out.printf("|%10s%32s%16s%32s%10s|\n", " ", "+" + "-".repeat(30) + "+", " ",
 					"+" + "-".repeat(30) + "+", " ");
-			System.out.printf("|%10s%32s%16s%32s%10s|\n", " ", "+" + "-".repeat(30) + "+", " ",
-					" " + " ".repeat(30) + " ", " ");
-			System.out.printf("|%10s%-7s%-24s%s%16s%-7s%-24s%s%10s|\n", " ", "|", "(5) Find by author", "|", " ",
-					" ", " ", " ", " ");
-			System.out.printf("|%10s%32s%16s%32s%10s|\n", " ", "+" + "-".repeat(30) + "+", " ",
-					" " + " ".repeat(30) + " ", " ");
+			System.out.printf("|%100s|\n", " ".repeat(100));
 			System.out.printf("|%80s%-20s|\n", " ", "(R) Return ->");
 			System.out.printf("+%100s+\n", "-".repeat(100));
 			System.out.print("Enter your choice: ");
@@ -375,14 +370,92 @@ public class FeatureImp implements Feature {
 				}
 				case '4': {
 
-					break;
-				}
-				case '5': {
 					FindByAuthorNamePage();
 					break;
 				}
-				case '6': {
+				case 'R': {
+					return;
+				}
+				default:
+					break;
+			}
+		}
+	}
+	public void SpecificRemovePage() {
+		while (true) {
+			System.out.print("\033[H\033[2J");
+			System.out.flush();
+			System.out.println();
+			System.out.printf("+%100s+\n", "-".repeat(100));
+			System.out.printf("|%s%60s%40s|\n", "", "LIBRARY MANAGEMENT SYSTEM", "");
+			System.out.printf("+%100s+\n", "-".repeat(100));
+			System.out.printf("|%3s%-10s%-10s%-12s%-10s%-10s%45s|\n", " ", "(H)HOME", "(B)BOOKS", "(P)PAPERS",
+					"(A)ABOUT", "(E)HELP", "");
+			System.out.printf("+%100s+\n", "-".repeat(100));
+			System.out.printf("|%100s|\n", " ".repeat(100));
+			System.out.printf("|%100s|\n", " ".repeat(100));
+			System.out.printf(
+					"|%16s+------------------------------------------------------------------+%16s|\n", " ",
+					" ");
+			System.out.printf("|%16s|%4s%-62s|%16s|\n", " ", " ", "(E) Enter book's name", " ",
+					" ");
+			System.out.printf(
+					"|%16s+------------------------------------------------------------------+%16s|\n", " ",
+					" ");
+			System.out.printf("|%100s|\n", " ".repeat(100));
+			System.out.printf("|%100s|\n", " ".repeat(100));
+			System.out.printf("|%80s%-20s|\n", " ", "(R) Return ->");
+			System.out.printf("+%100s+\n", "-".repeat(100));
+			System.out.print("Enter your choice: ");
+			char choice = scan.nextLine().charAt(0);
+			switch (choice) {
+				case 'E': {
+					BookDAO.getInstance().SpecificRemove();
+					break;
+				}
+				
+				case 'R': {
+					return;
+				}
+				default:
+					break;
+			}
+		}
+	}
 
+
+
+	public void RemovePage() {
+		while (true) {
+			System.out.print("\033[H\033[2J");
+			System.out.flush();
+			System.out.println();
+			System.out.printf("+%100s+\n", "-".repeat(100));
+			System.out.printf("|%s%60s%40s|\n", "", "LIBRARY MANAGEMENT SYSTEM", "");
+			System.out.printf("+%100s+\n", "-".repeat(100));
+			System.out.printf("|%3s%-10s%-10s%-12s%-10s%-10s%45s|\n", " ", "(H)HOME", "(B)BOOKS", "(P)PAPERS",
+					"(A)ABOUT", "(E)HELP", "");
+			System.out.printf("+%100s+\n", "-".repeat(100));
+			System.out.printf("|%100s|\n", " ".repeat(100));
+			System.out.printf("|%100s|\n", " ".repeat(100));
+			System.out.printf("|%10s%32s%16s%32s%10s|\n", " ", "+" + "-".repeat(30) + "+", " ",
+					"+" + "-".repeat(30) + "+", " ");
+			System.out.printf("|%10s%-7s%-24s%s%16s%-7s%-24s%s%10s|\n", " ", "|", "(1) Multiple remove", "|", " ",
+					"|", "(2) Specific remove", "|", " ");
+			System.out.printf("|%10s%32s%16s%32s%10s|\n", " ", "+" + "-".repeat(30) + "+", " ",
+					"+" + "-".repeat(30) + "+", " ");
+			System.out.printf("|%100s|\n", " ".repeat(100));
+			System.out.printf("|%80s%-20s|\n", " ", "(R) Return ->");
+			System.out.printf("+%100s+\n", "-".repeat(100));
+			System.out.print("Enter your choice: ");
+			char choice = scan.nextLine().charAt(0);
+			switch (choice) {
+				case '1': {
+					BookDAO.getInstance().MultipleRemove();
+					break;
+				}
+				case '2': {
+					SpecificRemovePage();
 					break;
 				}
 				case 'R': {
@@ -411,7 +484,7 @@ public class FeatureImp implements Feature {
 			System.out.printf("|%10s%32s%16s%32s%10s|\n", " ", "+" + "-".repeat(30) + "+", " ",
 					"+" + "-".repeat(30) + "+", " ");
 			System.out.printf("|%10s%-7s%-24s%s%16s%-7s%-24s%s%10s|\n", " ", "|", "(1) Add a new book", "|", " ",
-					"|", "(2) Delete book", "|", " ");
+					"|", "(2) Remove book", "|", " ");
 			System.out.printf("|%10s%32s%16s%32s%10s|\n", " ", "+" + "-".repeat(30) + "+", " ",
 					"+" + "-".repeat(30) + "+", " ");
 			System.out.printf("|%10s%32s%16s%32s%10s|\n", " ", "+" + "-".repeat(30) + "+", " ",
@@ -438,10 +511,11 @@ public class FeatureImp implements Feature {
 					break;
 				}
 				case '2': {
+					RemovePage();
 					break;
 				}
 				case '3': {
-					BookDAO.getInstance().showAll();
+					BookDAO.getInstance().displayAll();
 
 					break;
 				}
@@ -682,6 +756,7 @@ public class FeatureImp implements Feature {
 			}
 		}
 	}
+	
 
 	public void HomePage() {
 		while (true) {
@@ -738,6 +813,7 @@ public class FeatureImp implements Feature {
 					FinePage();
 					break;
 				}
+				
 				case 'L': {
 					return;
 				}
@@ -746,5 +822,7 @@ public class FeatureImp implements Feature {
 			}
 		}
 	}
+
+
 
 }
