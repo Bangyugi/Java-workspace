@@ -592,8 +592,7 @@ public class BookDAO {
             PreparedStatement psAuthorBook = connection.prepareStatement(bookAuthorQuery);
             psBook.setString(1, title);
             psAuthorBook.setString(1, title);
-            System.out.println(bookQuery);
-            System.out.println(bookAuthorQuery);
+            
             int row = 0;
             psAuthorBook.executeUpdate();
             row += psBook.executeUpdate();

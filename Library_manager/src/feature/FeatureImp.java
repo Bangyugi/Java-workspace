@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 import data_access_object.BookDAO;
+import data_access_object.LoanDAO;
+import data_access_object.MemberDAO;
 import database.JDBCUtil;
 import model.Account;
 
@@ -21,7 +23,6 @@ public class FeatureImp implements Feature {
 			try {
 				System.out.print("\033[H\033[2J"); // Đây là một cách xóa console sử dụng các lệnh escape sequence.
 				System.out.flush();
-
 				System.out.printf("+%50s+\n", "-".repeat(50));
 				System.out.printf("|%s%25s%25s|\n", "", "LOGIN", "");
 				System.out.printf("+%50s+\n", "-".repeat(50));
@@ -65,6 +66,41 @@ public class FeatureImp implements Feature {
 				}
 			} catch (SQLException e) {
 				error = e.getMessage();
+			}
+		}
+	}
+
+	public void ComingSoonPage() {
+		while (true) {
+			System.out.print("\033[H\033[2J");
+			System.out.flush();
+			System.out.println();
+			System.out.printf("+%100s+\n", "-".repeat(100));
+			System.out.printf("|%s%60s%40s|\n", "", "LIBRARY MANAGEMENT SYSTEM", "");
+			System.out.printf("+%100s+\n", "-".repeat(100));
+			System.out.printf("|%3s%-10s%-10s%-12s%-10s%-10s%45s|\n", " ", "(H)HOME", "(B)BOOKS", "(P)PAPERS",
+					"(A)ABOUT", "(E)HELP", "");
+			System.out.printf("+%100s+\n", "-".repeat(100));
+			System.out.printf("|%100s|\n", " ".repeat(100));
+			System.out.printf("|%100s|\n", " ".repeat(100));
+			System.out.printf("|%16s%-68s%16s|\n", " ", "Comming soon!", " ",
+					" ");
+
+			System.out.printf("|%100s|\n", " ".repeat(100));
+			System.out.printf("|%80s%-20s|\n", " ", "(R) Return ->");
+			System.out.printf("+%100s+\n", "-".repeat(100));
+			System.out.print("Enter your choice: ");
+			char choice = scan.nextLine().charAt(0);
+			switch (choice) {
+				case 'E': {
+					BookDAO.getInstance().displayByName();
+					break;
+				}
+				case 'R': {
+					return;
+				}
+				default:
+					break;
 			}
 		}
 	}
@@ -264,6 +300,59 @@ public class FeatureImp implements Feature {
 		}
 	}
 
+	public void AddMemberPage() {
+		while (true) {
+			System.out.print("\033[H\033[2J");
+			System.out.flush();
+			System.out.println();
+			System.out.printf("+%100s+\n", "-".repeat(100));
+			System.out.printf("|%s%60s%40s|\n", "", "LIBRARY MANAGEMENT SYSTEM", "");
+			System.out.printf("+%100s+\n", "-".repeat(100));
+			System.out.printf("|%3s%-10s%-10s%-12s%-10s%-10s%45s|\n", " ", "(H)HOME", "(B)BOOKS", "(P)PAPERS",
+					"(A)ABOUT", "(E)HELP", "");
+			System.out.printf("+%100s+\n", "-".repeat(100));
+			System.out.printf("|%100s|\n", " ".repeat(100));
+			System.out.printf("|%3s%-97s|\n", " ", "(A) Add a new book's information:");
+			System.out.printf("|%100s|\n", " ".repeat(100));
+			System.out.printf("|%16s+------------------------------------------------------------------+%16s|\n", " ",
+					" ");
+			System.out.printf("|%16s|%4s%-62s|%16s|\n", " ", " ", " Enter member's first name", " ",
+					" ");
+			System.out.printf("|%16s+------------------------------------------------------------------+%16s|\n", " ",
+					" ");
+			System.out.printf("|%16s+------------------------------------------------------------------+%16s|\n", " ",
+					" ");
+			System.out.printf("|%16s|%4s%-62s|%16s|\n", " ", " ", " Enter member's last name", " ",
+					" ");
+			System.out.printf("|%16s+------------------------------------------------------------------+%16s|\n", " ",
+					" ");
+			System.out.printf("|%16s+------------------------------------------------------------------+%16s|\n", " ",
+					" ");
+			System.out.printf("|%16s|%4s%-62s|%16s|\n", " ", " ", " Enter member's phone", " ",
+					" ");
+			System.out.printf("|%16s+------------------------------------------------------------------+%16s|\n", " ",
+					" ");
+			System.out.printf("|%100s|\n", " ".repeat(100));
+			System.out.printf("|%100s|\n", " ".repeat(100));
+			System.out.printf("|%100s|\n", " ".repeat(100));
+			System.out.printf("|%80s%-20s|\n", " ", "(R) Return ->");
+			System.out.printf("+%100s+\n", "-".repeat(100));
+			System.out.print("Enter your choice: ");
+			char choice = scan.nextLine().charAt(0);
+			switch (choice) {
+				case 'A': {
+					MemberDAO.getInstance().addMember();
+					break;
+				}
+				case 'R': {
+					return;
+				}
+				default:
+					break;
+			}
+		}
+	}
+
 	public void AddBookPage() {
 		while (true) {
 			System.out.print("\033[H\033[2J");
@@ -381,6 +470,7 @@ public class FeatureImp implements Feature {
 			}
 		}
 	}
+
 	public void SpecificRemovePage() {
 		while (true) {
 			System.out.print("\033[H\033[2J");
@@ -413,7 +503,7 @@ public class FeatureImp implements Feature {
 					BookDAO.getInstance().SpecificRemove();
 					break;
 				}
-				
+
 				case 'R': {
 					return;
 				}
@@ -422,8 +512,6 @@ public class FeatureImp implements Feature {
 			}
 		}
 	}
-
-
 
 	public void RemovePage() {
 		while (true) {
@@ -525,6 +613,8 @@ public class FeatureImp implements Feature {
 					break;
 				}
 				case '5': {
+					ComingSoonPage();
+
 					break;
 				}
 				case '6': {
@@ -557,22 +647,21 @@ public class FeatureImp implements Feature {
 			System.out.printf("|%10s%32s%16s%32s%10s|\n", " ", "+" + "-".repeat(30) + "+", " ",
 					"+" + "-".repeat(30) + "+", " ");
 			System.out.printf("|%10s%-7s%-24s%s%16s%-7s%-24s%s%10s|\n", " ", "|", "(1) Add a new member", "|", " ",
-					"|", "(4) Remove Member", "|", " ");
+					"|", "(2) Remove Member", "|", " ");
 			System.out.printf("|%10s%32s%16s%32s%10s|\n", " ", "+" + "-".repeat(30) + "+", " ",
 					"+" + "-".repeat(30) + "+", " ");
 			System.out.printf("|%10s%32s%16s%32s%10s|\n", " ", "+" + "-".repeat(30) + "+", " ",
 					"+" + "-".repeat(30) + "+", " ");
-			System.out.printf("|%10s%-7s%-24s%s%16s%-7s%-24s%s%10s|\n", " ", "|", "(2) Pending approval", "|", " ",
-					"|", "(5) Show all infor", "|", " ");
+			System.out.printf("|%10s%-7s%-24s%s%16s%-7s%-24s%s%10s|\n", " ", "|", "(3) Pending approval", "|", " ",
+					"|", "(4) Show all infor", "|", " ");
 			System.out.printf("|%10s%32s%16s%32s%10s|\n", " ", "+" + "-".repeat(30) + "+", " ",
 					"+" + "-".repeat(30) + "+", " ");
 			System.out.printf("|%10s%32s%16s%32s%10s|\n", " ", "+" + "-".repeat(30) + "+", " ",
-					"+" + "-".repeat(30) + "+", " ");
-
-			System.out.printf("|%10s%-7s%-24s%s%16s%-7s%-24s%s%10s|\n", " ", "|", "(3) Update member", "|", " ",
-					"|", "(6) Find by name", "|", " ");
+					" " + " ".repeat(30) + " ", " ");
+			System.out.printf("|%10s%-7s%-24s%s%16s%-7s%-24s%s%10s|\n", " ", "|", "(5) Display member", "|", " ",
+					"", " ", " ", " ");
 			System.out.printf("|%10s%32s%16s%32s%10s|\n", " ", "+" + "-".repeat(30) + "+", " ",
-					"+" + "-".repeat(30) + "+", " ");
+					" " + " ".repeat(30) + " ", " ");
 
 			System.out.printf("|%80s%-20s|\n", " ", "(R) Return ->");
 			System.out.printf("+%100s+\n", "-".repeat(100));
@@ -581,29 +670,27 @@ public class FeatureImp implements Feature {
 			// scan.nextLine();
 			switch (choice) {
 				case '1': {
-
+					AddMemberPage();
 					break;
 				}
 				case '2': {
-
+					MemberDAO.getInstance().displayWithId();
 					break;
 				}
 				case '3': {
 
+					MemberDAO.getInstance().DisplayPendingApproval();
 					break;
 				}
 				case '4': {
-
+					MemberDAO.getInstance().displayAll();
 					break;
 				}
 				case '5': {
-
+					MemberDAO.getInstance().displayMember();
 					break;
 				}
-				case '6': {
 
-					break;
-				}
 				case 'R': {
 					return;
 				}
@@ -653,7 +740,7 @@ public class FeatureImp implements Feature {
 			// scan.nextLine();
 			switch (choice) {
 				case '1': {
-
+					LoanDAO.getInstance().displayAll();
 					break;
 				}
 				case '2': {
@@ -756,7 +843,6 @@ public class FeatureImp implements Feature {
 			}
 		}
 	}
-	
 
 	public void HomePage() {
 		while (true) {
@@ -813,7 +899,10 @@ public class FeatureImp implements Feature {
 					FinePage();
 					break;
 				}
-				
+				case '5': {
+					break;
+				}
+
 				case 'L': {
 					return;
 				}
@@ -822,7 +911,5 @@ public class FeatureImp implements Feature {
 			}
 		}
 	}
-
-
 
 }

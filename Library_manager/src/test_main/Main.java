@@ -14,23 +14,30 @@ public class Main {
 			System.out.print("\033[H\033[2J");
 			System.out.flush();
 			System.out.println();
-			System.out.printf("+%100s+\n", "-".repeat(100));
-			System.out.printf("|%s%60s%40s|\n", "", "LIBRARY MANAGEMENT SYSTEM", "");
-			System.out.printf("+%100s+\n", "-".repeat(100));
-			System.out.printf("|%3s%-10s%-10s%-12s%-10s%-10s%45s|\n", " ", "(H)HOME", "(B)BOOKS", "(P)PAPERS",
+			System.out.printf("+%114s+\n", "-".repeat(114));
+			System.out.printf("|%s%69s%45s|\n", "", "LIBRARY MANAGEMENT SYSTEM", "");
+			System.out.printf("+%114s+\n", "-".repeat(114));
+			System.out.printf("|%3s%-10s%-10s%-12s%-10s%-10s%59s|\n", " ", "(H)HOME", "(B)BOOKS", "(P)PAPERS",
 					"(A)ABOUT", "(E)HELP", "");
-			System.out.printf("+%100s+\n", "-".repeat(100));
-			System.out.printf("|%100s|\n", " ".repeat(100));
-			System.out.printf("|%100s|\n", " ".repeat(100));
-			System.out.printf("|%10s%32s%16s%32s%10s|\n", " ", "+" + "-".repeat(30) + "+", " ",
-			"+" + "-".repeat(30) + "+", " ");
-			System.out.printf("|%10s%-7s%-24s%s%16s%-7s%-24s%s%10s|\n", " ", "|", "(1) Multiple remove", "|", " ",
-			"|", "(2) Specific remove", "|", " ");
-			System.out.printf("|%10s%32s%16s%32s%10s|\n", " ", "+" + "-".repeat(30) + "+", " ",
-			"+" + "-".repeat(30) + "+", " ");
-			System.out.printf("|%100s|\n", " ".repeat(100));
-			System.out.printf("|%80s%-20s|\n", " ", "(R) Return ->");
-			System.out.printf("+%100s+\n", "-".repeat(100));
+			System.out.printf("+%114s+\n", "-".repeat(114));
+			System.out.printf("|%114s|\n", " ".repeat(114));
+			System.out.printf("|%3s+%-12s+%-29s+%-17s+%-22s+%-22s+%3s|\n", " ", "-".repeat(12), "-".repeat(29),
+					"-".repeat(17), "-".repeat(22), "-".repeat(22), "");
+			System.out.printf("|%3s| %-10s | %-27s | %-15s | %-20s | %-20s |%3s|\n", " ", "ID", "Name", "Joined date",
+					"Category", "Phone", "");
+			System.out.printf("|%3s+%-12s+%-29s+%-17s+%-22s+%-22s+%3s|\n", " ", "-".repeat(12), "-".repeat(29),
+					"-".repeat(17), "-".repeat(22), "-".repeat(22), "");
+			System.out.printf("|%3s| %-10s | %-27s | %-15s | %-20s | %-20s |%3s|\n", " ", "20052", "Do Van Dat",
+					"2024-02-13", "Pending Approval", "0987654356", "");
+			System.out.printf("|%3s+%-12s+%-29s+%-17s+%-22s+%-22s+%3s|\n", " ", "-".repeat(12), "-".repeat(29),
+					"-".repeat(17), "-".repeat(22), "-".repeat(22), "");
+			System.out.printf("|%114s|\n", " ".repeat(114));
+			System.out.printf("|%3s%-20s%91s|\n", " ", "(1) Accept all", "");
+			System.out.printf("|%3s%-20s%91s|\n", " ", "(2) Accept by id", "");
+			System.out.printf("|%114s|\n", " ".repeat(114));
+			System.out.printf("|%94s%-20s|\n", " ", "(R) Return ->");
+			System.out.printf("+%114s+\n", "-".repeat(114));
+
 			System.out.print("Enter your choice: ");
 			char choice = scan.nextLine().charAt(0);
 			switch (choice) {
