@@ -1,60 +1,65 @@
 package model;
 
-import java.sql.Date;
+import java.util.Scanner;
 
 public class Loan {
-	String book;
-	String member;
-	Date loan_Date;
-	Date return_Date;
+	int book_id;
+	int member_id;
+	String loan_date;
+	String return_date;
 
 	public Loan() {
 	}
 
-	public Loan(String book, String member, Date loan_Date, Date return_Date) {
-		super();
-		this.book = book;
-		this.member = member;
-		this.loan_Date = loan_Date;
-		this.return_Date = return_Date;
+	public Loan(int book_id, int member_id, String loan_date, String return_date) {
+		this.book_id = book_id;
+		this.member_id = member_id;
+		this.loan_date = loan_date;
+		this.return_date = return_date;
 	}
 
-	public String getBook() {
-		return book;
+	public int getBook_id() {
+		return book_id;
 	}
 
-	public void setBook(String book) {
-		this.book = book;
+	public void setBook_id(int book_id) {
+		this.book_id = book_id;
 	}
 
-	public String getMember() {
-		return member;
+	public int getMember_id() {
+		return member_id;
 	}
 
-	public void setMember(String member) {
-		this.member = member;
+	public void setMember_id(int member_id) {
+		this.member_id = member_id;
 	}
 
-	public Date getLoan_Date() {
-		return loan_Date;
+	public String getLoan_date() {
+		return loan_date;
 	}
 
-	public void setLoan_Date(Date loan_Date) {
-		this.loan_Date = loan_Date;
+	public void setLoan_date(String loan_date) {
+		this.loan_date = loan_date;
 	}
 
-	public Date getReturn_Date() {
-		return return_Date;
+	public String getReturn_date() {
+		return return_date;
 	}
 
-	public void setReturn_Date(Date return_Date) {
-		this.return_Date = return_Date;
+	public void setReturn_date(String return_date) {
+		this.return_date = return_date;
 	}
 
-	@Override
-	public String toString() {
-		return "Loan [book=" + book + ", member=" + member + ", loan_Date=" + loan_Date
-				+ ", return_Date=" + return_Date + "]";
+	Scanner scan = new Scanner(System.in);
+	public void input()
+	{
+		System.out.print("Enter book's id: ");
+		this.book_id = scan.nextInt();
+		System.out.print("Enter member's id: ");
+		this.member_id = scan.nextInt();
+		scan.nextLine();
+		System.out.print("Enter loan date (yyyy-mm-dd): ");
+		this.loan_date = scan.nextLine();
 	}
 	
 

@@ -114,42 +114,46 @@ public class MemberDAO {
         try {
             while (flag) {
                 Connection connection = JDBCUtil.getConnection();
-                String query = "select M.fname, M.lname, M.joined_date, MS.state_value, M.phone from Member as M \n" + //
-                        "left join Member_Status as MS on M.active_status_id = MS.id where MS.state_value = 'Member' order by M.lname; ";
+                String query = "select M.id, M.fname, M.lname, M.joined_date, MS.state_value, M.phone from Member as M \n"
+                        + //
+                        "left join Member_Status as MS on M.active_status_id = MS.id where M.active_status_id = 400005  order by M.lname; ";
                 Statement statement = connection.createStatement();
                 ResultSet rs = statement.executeQuery(query);
                 System.out.print("\033[H\033[2J");
                 System.out.flush();
                 System.out.println();
-                System.out.printf("+%94s+\n", "-".repeat(94));
-                System.out.printf("|%s%54s%40s|\n", "", "LIBRARY MANAGEMENT SYSTEM", "");
-                System.out.printf("+%94s+\n", "-".repeat(94));
-                System.out.printf("|%3s%-10s%-10s%-12s%-10s%-10s%39s|\n", " ", "(H)HOME", "(B)BOOKS", "(P)PAPERS",
+                System.out.printf("+%114s+\n", "-".repeat(114));
+                System.out.printf("|%s%69s%45s|\n", "", "LIBRARY MANAGEMENT SYSTEM", "");
+                System.out.printf("+%114s+\n", "-".repeat(114));
+                System.out.printf("|%3s%-10s%-10s%-12s%-10s%-10s%59s|\n", " ", "(H)HOME", "(B)BOOKS", "(P)PAPERS",
                         "(A)ABOUT", "(E)HELP", "");
-                System.out.printf("+%94s+\n", "-".repeat(94));
-                System.out.printf("|%94s|\n", " ".repeat(94));
-                System.out.printf("|%3s+%-28s+%-17s+%-22s+%-16s+%3s|\n", " ", "-".repeat(28), "-".repeat(17),
-                        "-".repeat(22), "-".repeat(16), "");
-                System.out.printf("|%3s| %-26s | %-15s | %-20s | %-14s |%3s|\n", " ", "Name", "Joined date", "Category",
-                        "Phone", "");
-                System.out.printf("|%3s+%-28s+%-17s+%-22s+%-16s+%3s|\n", " ", "-".repeat(28), "-".repeat(17),
-                        "-".repeat(22), "-".repeat(16), "");
+                System.out.printf("+%114s+\n", "-".repeat(114));
+                System.out.printf("|%114s|\n", " ".repeat(114));
+                System.out.printf("|%3s+%-12s+%-29s+%-17s+%-22s+%-22s+%3s|\n", " ", "-".repeat(12), "-".repeat(29),
+                        "-".repeat(17), "-".repeat(22), "-".repeat(22), "");
+                System.out.printf("|%3s| %-10s | %-27s | %-15s | %-20s | %-20s |%3s|\n", " ", "ID", "Name",
+                        "Joined date",
+                        "Category", "Phone", "");
+                System.out.printf("|%3s+%-12s+%-29s+%-17s+%-22s+%-22s+%3s|\n", " ", "-".repeat(12), "-".repeat(29),
+                        "-".repeat(17), "-".repeat(22), "-".repeat(22), "");
                 while (rs.next()) {
+                    int id = rs.getInt("id");
                     String fname = rs.getString("fname");
                     String lname = rs.getString("lname");
                     Date joinedDate = rs.getDate("joined_date");
                     String phone = rs.getString("phone");
                     String stateValue = rs.getString("state_value");
-                    System.out.printf("|%3s| %-26s | %-15s | %-20s | %-14s |%3s|\n", " ", fname + " " + lname,
-                            joinedDate,
-                            stateValue, phone, "");
+                    System.out.printf("|%3s| %-10s | %-27s | %-15s | %-20s | %-20s |%3s|\n", " ",
+                            id, fname + " " + lname,
+                            joinedDate, stateValue, phone, "");
                 }
-                System.out.printf("|%3s+%-28s+%-17s+%-22s+%-16s+%3s|\n", " ", "-".repeat(28), "-".repeat(17),
-                        "-".repeat(22), "-".repeat(16), "");
-                System.out.printf("|%94s|\n", " ".repeat(94));
-                System.out.printf("|%94s|\n", " ".repeat(94));
-                System.out.printf("|%74s%-20s|\n", " ", "(R) Return ->");
-                System.out.printf("+%94s+\n", "-".repeat(94));
+                System.out.printf("|%3s+%-12s+%-29s+%-17s+%-22s+%-22s+%3s|\n", " ", "-".repeat(12), "-".repeat(29),
+                        "-".repeat(17), "-".repeat(22), "-".repeat(22), "");
+                System.out.printf("|%114s|\n", " ".repeat(114));
+                System.out.printf("|%114s|\n", " ".repeat(114));
+                System.out.printf("|%114s|\n", " ".repeat(114));
+                System.out.printf("|%94s%-20s|\n", " ", "(R) Return ->");
+                System.out.printf("+%114s+\n", "-".repeat(114));
                 JDBCUtil.closeConnection(connection);
                 System.out.print("Enter your choice: ");
                 char choice = scan.nextLine().charAt(0);

@@ -7,10 +7,13 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 import data_access_object.BookDAO;
+import data_access_object.FineDAO;
 import data_access_object.LoanDAO;
 import data_access_object.MemberDAO;
 import database.JDBCUtil;
 import model.Account;
+import model.Reservation;
+import test_main.ClearScreen;
 
 public class FeatureImp implements Feature {
 
@@ -21,8 +24,7 @@ public class FeatureImp implements Feature {
 		String error = "";
 		while (true) {
 			try {
-				System.out.print("\033[H\033[2J"); // Đây là một cách xóa console sử dụng các lệnh escape sequence.
-				System.out.flush();
+				ClearScreen.clrscr();
 				System.out.printf("+%50s+\n", "-".repeat(50));
 				System.out.printf("|%s%25s%25s|\n", "", "LOGIN", "");
 				System.out.printf("+%50s+\n", "-".repeat(50));
@@ -72,8 +74,7 @@ public class FeatureImp implements Feature {
 
 	public void ComingSoonPage() {
 		while (true) {
-			System.out.print("\033[H\033[2J");
-			System.out.flush();
+			ClearScreen.clrscr();
 			System.out.println();
 			System.out.printf("+%100s+\n", "-".repeat(100));
 			System.out.printf("|%s%60s%40s|\n", "", "LIBRARY MANAGEMENT SYSTEM", "");
@@ -107,8 +108,7 @@ public class FeatureImp implements Feature {
 
 	public void FindByNamePage() {
 		while (true) {
-			System.out.print("\033[H\033[2J");
-			System.out.flush();
+			ClearScreen.clrscr();
 			System.out.println();
 			System.out.printf("+%100s+\n", "-".repeat(100));
 			System.out.printf("|%s%60s%40s|\n", "", "LIBRARY MANAGEMENT SYSTEM", "");
@@ -148,8 +148,7 @@ public class FeatureImp implements Feature {
 
 	public void FindByCategoryNamePage() {
 		while (true) {
-			System.out.print("\033[H\033[2J");
-			System.out.flush();
+			ClearScreen.clrscr();
 			System.out.println();
 			System.out.printf("+%100s+\n", "-".repeat(100));
 			System.out.printf("|%s%60s%40s|\n", "", "LIBRARY MANAGEMENT SYSTEM", "");
@@ -189,8 +188,7 @@ public class FeatureImp implements Feature {
 
 	public void FindByYearPage() {
 		while (true) {
-			System.out.print("\033[H\033[2J");
-			System.out.flush();
+			ClearScreen.clrscr();
 			System.out.println();
 			System.out.printf("+%100s+\n", "-".repeat(100));
 			System.out.printf("|%s%60s%40s|\n", "", "LIBRARY MANAGEMENT SYSTEM", "");
@@ -230,8 +228,7 @@ public class FeatureImp implements Feature {
 
 	public void FindByAuthorNamePage() {
 		while (true) {
-			System.out.print("\033[H\033[2J");
-			System.out.flush();
+			ClearScreen.clrscr();
 			System.out.println();
 			System.out.printf("+%100s+\n", "-".repeat(100));
 			System.out.printf("|%s%60s%40s|\n", "", "LIBRARY MANAGEMENT SYSTEM", "");
@@ -302,8 +299,7 @@ public class FeatureImp implements Feature {
 
 	public void AddMemberPage() {
 		while (true) {
-			System.out.print("\033[H\033[2J");
-			System.out.flush();
+			ClearScreen.clrscr();
 			System.out.println();
 			System.out.printf("+%100s+\n", "-".repeat(100));
 			System.out.printf("|%s%60s%40s|\n", "", "LIBRARY MANAGEMENT SYSTEM", "");
@@ -353,10 +349,129 @@ public class FeatureImp implements Feature {
 		}
 	}
 
+	public void AddLoanPage() {
+		while (true) {
+			ClearScreen.clrscr();
+			System.out.println();
+			System.out.printf("+%100s+\n", "-".repeat(100));
+			System.out.printf("|%s%60s%40s|\n", "", "LIBRARY MANAGEMENT SYSTEM", "");
+			System.out.printf("+%100s+\n", "-".repeat(100));
+			System.out.printf("|%3s%-10s%-10s%-12s%-10s%-10s%45s|\n", " ", "(H)HOME", "(B)BOOKS", "(P)PAPERS",
+					"(A)ABOUT", "(E)HELP", "");
+			System.out.printf("+%100s+\n", "-".repeat(100));
+			System.out.printf("|%100s|\n", " ".repeat(100));
+			System.out.printf("|%3s%-97s|\n", " ", "(A) Add a new book's information:");
+			System.out.printf("|%100s|\n", " ".repeat(100));
+			System.out.printf("|%16s+------------------------------------------------------------------+%16s|\n", " ",
+					" ");
+			System.out.printf("|%16s|%4s%-62s|%16s|\n", " ", " ", " Enter book's id", " ",
+					" ");
+			System.out.printf("|%16s+------------------------------------------------------------------+%16s|\n", " ",
+					" ");
+			System.out.printf("|%16s+------------------------------------------------------------------+%16s|\n", " ",
+					" ");
+			System.out.printf("|%16s|%4s%-62s|%16s|\n", " ", " ", " Enter member's id", " ",
+					" ");
+			System.out.printf("|%16s+------------------------------------------------------------------+%16s|\n", " ",
+					" ");
+			System.out.printf("|%16s+------------------------------------------------------------------+%16s|\n", " ",
+					" ");
+			System.out.printf("|%16s|%4s%-62s|%16s|\n", " ", " ", " Enter loan date", " ",
+					" ");
+			System.out.printf("|%16s+------------------------------------------------------------------+%16s|\n", " ",
+					" ");
+			System.out.printf("|%100s|\n", " ".repeat(100));
+			System.out.printf("|%100s|\n", " ".repeat(100));
+			System.out.printf("|%100s|\n", " ".repeat(100));
+			System.out.printf("|%80s%-20s|\n", " ", "(R) Return ->");
+			System.out.printf("+%100s+\n", "-".repeat(100));
+			System.out.print("Enter your choice: ");
+			char choice = scan.nextLine().charAt(0);
+			switch (choice) {
+				case 'A': {
+					LoanDAO.getInstance().addLoan();
+					break;
+				}
+				case 'R': {
+					return;
+				}
+				default:
+					break;
+			}
+		}
+	}
+
+	public void AddFinePage(int number) {
+		while (true) {
+			ClearScreen.clrscr();
+			System.out.println();
+			System.out.printf("+%100s+\n", "-".repeat(100));
+			System.out.printf("|%s%60s%40s|\n", "", "LIBRARY MANAGEMENT SYSTEM", "");
+			System.out.printf("+%100s+\n", "-".repeat(100));
+			System.out.printf("|%3s%-10s%-10s%-12s%-10s%-10s%45s|\n", " ", "(H)HOME", "(B)BOOKS", "(P)PAPERS",
+					"(A)ABOUT", "(E)HELP", "");
+			System.out.printf("+%100s+\n", "-".repeat(100));
+			System.out.printf("|%100s|\n", " ".repeat(100));
+			if (number == 1)
+				System.out.printf("|%3s%-97s|\n", " ", "(A) Add overdue return fine's information:");
+			if (number == 2)
+				System.out.printf("|%3s%-97s|\n", " ", "(A) Add lost book fine's information:");
+			if (number == 3)
+				System.out.printf("|%3s%-97s|\n", " ", "(A) Add damaged book fine's information:");
+			System.out.printf("|%100s|\n", " ".repeat(100));
+			System.out.printf("|%16s+------------------------------------------------------------------+%16s|\n", " ",
+					" ");
+			System.out.printf("|%16s|%4s%-62s|%16s|\n", " ", " ", " Enter member's id", " ",
+					" ");
+			System.out.printf("|%16s+------------------------------------------------------------------+%16s|\n", " ",
+					" ");
+			System.out.printf("|%16s+------------------------------------------------------------------+%16s|\n", " ",
+					" ");
+			System.out.printf("|%16s|%4s%-62s|%16s|\n", " ", " ", " Enter loan's id", " ",
+					" ");
+			System.out.printf("|%16s+------------------------------------------------------------------+%16s|\n", " ",
+					" ");
+			System.out.printf("|%16s+------------------------------------------------------------------+%16s|\n", " ",
+					" ");
+			System.out.printf("|%16s|%4s%-62s|%16s|\n", " ", " ", " Enter fine date", " ",
+					" ");
+			System.out.printf("|%16s+------------------------------------------------------------------+%16s|\n", " ",
+					" ");
+			System.out.printf("|%16s+------------------------------------------------------------------+%16s|\n", " ",
+					" ");
+			System.out.printf("|%16s|%4s%-62s|%16s|\n", " ", " ", " Enter fine amount", " ",
+					" ");
+			System.out.printf("|%16s+------------------------------------------------------------------+%16s|\n", " ",
+					" ");
+			System.out.printf("|%100s|\n", " ".repeat(100));
+			System.out.printf("|%100s|\n", " ".repeat(100));
+			System.out.printf("|%100s|\n", " ".repeat(100));
+			System.out.printf("|%80s%-20s|\n", " ", "(R) Return ->");
+			System.out.printf("+%100s+\n", "-".repeat(100));
+			System.out.print("Enter your choice: ");
+			char choice = scan.nextLine().charAt(0);
+			switch (choice) {
+				case 'A': {
+					if (number == 1)
+						FineDAO.getInstance().AddOverdueReturnFine();
+					if (number == 2)
+						FineDAO.getInstance().AddLostFine();
+					if (number == 3)
+						FineDAO.getInstance().AddDamageFine();
+					break;
+				}
+				case 'R': {
+					return;
+				}
+				default:
+					break;
+			}
+		}
+	}
+
 	public void AddBookPage() {
 		while (true) {
-			System.out.print("\033[H\033[2J");
-			System.out.flush();
+			ClearScreen.clrscr();
 			System.out.println();
 			System.out.printf("+%100s+\n", "-".repeat(100));
 			System.out.printf("|%s%60s%40s|\n", "", "LIBRARY MANAGEMENT SYSTEM", "");
@@ -414,8 +529,7 @@ public class FeatureImp implements Feature {
 
 	public void FindBookPage() {
 		while (true) {
-			System.out.print("\033[H\033[2J");
-			System.out.flush();
+			ClearScreen.clrscr();
 			System.out.println();
 			System.out.printf("+%100s+\n", "-".repeat(100));
 			System.out.printf("|%s%60s%40s|\n", "", "LIBRARY MANAGEMENT SYSTEM", "");
@@ -473,8 +587,7 @@ public class FeatureImp implements Feature {
 
 	public void SpecificRemovePage() {
 		while (true) {
-			System.out.print("\033[H\033[2J");
-			System.out.flush();
+			ClearScreen.clrscr();
 			System.out.println();
 			System.out.printf("+%100s+\n", "-".repeat(100));
 			System.out.printf("|%s%60s%40s|\n", "", "LIBRARY MANAGEMENT SYSTEM", "");
@@ -515,8 +628,7 @@ public class FeatureImp implements Feature {
 
 	public void RemovePage() {
 		while (true) {
-			System.out.print("\033[H\033[2J");
-			System.out.flush();
+			ClearScreen.clrscr();
 			System.out.println();
 			System.out.printf("+%100s+\n", "-".repeat(100));
 			System.out.printf("|%s%60s%40s|\n", "", "LIBRARY MANAGEMENT SYSTEM", "");
@@ -557,8 +669,7 @@ public class FeatureImp implements Feature {
 
 	public void BookPage() {
 		while (true) {
-			System.out.print("\033[H\033[2J");
-			System.out.flush();
+			ClearScreen.clrscr();
 			System.out.println();
 			System.out.printf("+%100s+\n", "-".repeat(100));
 			System.out.printf("|%s%60s%40s|\n", "", "LIBRARY MANAGEMENT SYSTEM", "");
@@ -632,8 +743,7 @@ public class FeatureImp implements Feature {
 
 	public void MemberPage() {
 		while (true) {
-			System.out.print("\033[H\033[2J");
-			System.out.flush();
+			ClearScreen.clrscr();
 			System.out.println();
 			System.out.printf("+%100s+\n", "-".repeat(100));
 			System.out.printf("|%s%60s%40s|\n", "", "LIBRARY MANAGEMENT SYSTEM", "");
@@ -702,8 +812,7 @@ public class FeatureImp implements Feature {
 
 	public void LoanPage() {
 		while (true) {
-			System.out.print("\033[H\033[2J");
-			System.out.flush();
+			ClearScreen.clrscr();
 			System.out.println();
 			System.out.printf("+%100s+\n", "-".repeat(100));
 			System.out.printf("|%s%60s%40s|\n", "", "LIBRARY MANAGEMENT SYSTEM", "");
@@ -717,7 +826,7 @@ public class FeatureImp implements Feature {
 			System.out.printf("|%10s%32s%16s%32s%10s|\n", " ", "+" + "-".repeat(30) + "+", " ",
 					"+" + "-".repeat(30) + "+", " ");
 			System.out.printf("|%10s%-7s%-24s%s%16s%-7s%-24s%s%10s|\n", " ", "|", "(1) Show all infor", "|", " ",
-					"|", "(2) Find by date", "|", " ");
+					"|", "(2) Out of time", "|", " ");
 			System.out.printf("|%10s%32s%16s%32s%10s|\n", " ", "+" + "-".repeat(30) + "+", " ",
 					"+" + "-".repeat(30) + "+", " ");
 			System.out.printf("|%10s%32s%16s%32s%10s|\n", " ", "+" + "-".repeat(30) + "+", " ",
@@ -744,19 +853,19 @@ public class FeatureImp implements Feature {
 					break;
 				}
 				case '2': {
-
+					LoanDAO.getInstance().OutOfTime();
 					break;
 				}
 				case '3': {
-
+					LoanDAO.getInstance().haventReturn();
 					break;
 				}
 				case '4': {
-
+					AddLoanPage();
 					break;
 				}
 				case '5': {
-
+					LoanDAO.getInstance().UpdateReturnDate();
 					break;
 				}
 				case '6': {
@@ -772,10 +881,80 @@ public class FeatureImp implements Feature {
 		}
 	}
 
+	public void TypeFinePage() {
+		while (true) {
+			ClearScreen.clrscr();
+			System.out.println();
+			System.out.printf("+%100s+\n", "-".repeat(100));
+			System.out.printf("|%s%60s%40s|\n", "", "LIBRARY MANAGEMENT SYSTEM", "");
+			System.out.printf("+%100s+\n", "-".repeat(100));
+			System.out.printf("|%3s%-10s%-10s%-12s%-10s%-10s%45s|\n", " ", "(H)HOME", "(B)BOOKS", "(P)PAPERS",
+					"(A)ABOUT", "(E)HELP", "");
+			System.out.printf("+%100s+\n", "-".repeat(100));
+			System.out.printf("|%100s|\n", " ".repeat(100));
+			System.out.printf("|%100s|\n", " ".repeat(100));
+			System.out.printf("|%100s|\n", " ".repeat(100));
+			System.out.printf("|%10s+%78s+%10s|\n", " ", "" + "-".repeat(78) + "", " ");
+			System.out.printf("|%10s|%26s%-52s|%10s|\n", " ", "", "(1) Add Overdue return fine", "", " ");
+			System.out.printf("|%10s+%78s+%10s|\n", " ", "" + "-".repeat(78) + "", " ");
+			System.out.printf("|%100s|\n", " ".repeat(100));
+			System.out.printf("|%10s+%78s+%10s|\n", " ", "" + "-".repeat(78) + "", " ");
+			
+			System.out.printf("|%10s|%28s%-50s|%10s|\n", " ", "", "(2) Add lost book fine", "", " ");
+			
+			System.out.printf("|%10s+%78s+%10s|\n", " ", "" + "-".repeat(78) + "", " ");
+			System.out.printf("|%100s|\n", " ".repeat(100));
+			System.out.printf("|%10s+%78s+%10s|\n", " ", "" + "-".repeat(78) + "", " ");
+			
+			System.out.printf("|%10s|%29s%-49s|%10s|\n", " ", "", "(3) Add damage fine", "", " ");
+			
+			System.out.printf("|%10s+%78s+%10s|\n", " ", "" + "-".repeat(78) + "", " ");
+			System.out.printf("|%100s|\n", " ".repeat(100));
+
+			System.out.printf("|%100s|\n", " ".repeat(100));
+			System.out.printf("|%80s%-20s|\n", " ", "(R) Return ->");
+			System.out.printf("+%100s+\n", "-".repeat(100));
+			System.out.print("Enter your choice: ");
+			char choice = scan.nextLine().charAt(0);
+			// scan.nextLine();
+			switch (choice) {
+				case '1': {
+					AddFinePage((int)choice - (int)'0');
+					break;
+				}
+				case '2': {
+					AddFinePage((int)choice - (int)'0');
+
+					break;
+				}
+				case '3': {
+					AddFinePage((int)choice - (int)'0');
+
+					break;
+				}
+				case '4': {
+
+					break;
+				}
+				case '5': {
+
+					break;
+				}
+				case '6': {
+					break;
+				}
+				case 'R': {
+					return;
+				}
+				default:
+					break;
+			}
+		}
+	}
+
 	public void FinePage() {
 		while (true) {
-			System.out.print("\033[H\033[2J");
-			System.out.flush();
+			ClearScreen.clrscr();
 			System.out.println();
 			System.out.printf("+%100s+\n", "-".repeat(100));
 			System.out.printf("|%s%60s%40s|\n", "", "LIBRARY MANAGEMENT SYSTEM", "");
@@ -788,7 +967,78 @@ public class FeatureImp implements Feature {
 			System.out.printf("|%100s|\n", " ".repeat(100));
 			System.out.printf("|%10s%32s%16s%32s%10s|\n", " ", "+" + "-".repeat(30) + "+", " ",
 					"+" + "-".repeat(30) + "+", " ");
-			System.out.printf("|%10s%-7s%-24s%s%16s%-7s%-24s%s%10s|\n", " ", "|", "(1) Show all infor", "|", " ",
+			System.out.printf("|%10s%-7s%-24s%s%16s%-7s%-24s%s%10s|\n", " ", "|", "(1) Show all fine", "|",
+					" ",
+					"|", "(2) Lost fine", "|", " ");
+			System.out.printf("|%10s%32s%16s%32s%10s|\n", " ", "+" + "-".repeat(30) + "+", " ",
+					"+" + "-".repeat(30) + "+", " ");
+			System.out.printf("|%10s%32s%16s%32s%10s|\n", " ", "+" + "-".repeat(30) + "+", " ",
+					"+" + "-".repeat(30) + "+", " ");
+			System.out.printf("|%10s%-7s%-24s%s%16s%-7s%-24s%s%10s|\n", " ", "|", "(3) Overdue fine", "|", " ",
+					"|", "(4) Damage fine", "|", " ");
+			System.out.printf("|%10s%32s%16s%32s%10s|\n", " ", "+" + "-".repeat(30) + "+", " ",
+					"+" + "-".repeat(30) + "+", " ");
+			System.out.printf("|%10s%32s%16s%32s%10s|\n", " ", "+" + "-".repeat(30) + "+", " ",
+					"" + "".repeat(30) + "", " ");
+			System.out.printf("|%10s%-7s%-24s%s%16s%-7s%-24s%s%10s|\n", " ", "|", "(5) Add new fine", "|", " ",
+					" ", " ", " ", " ");
+			System.out.printf("|%10s%32s%16s%32s%10s|\n", " ", "+" + "-".repeat(30) + "+", " ",
+					"" + "".repeat(30) + "", " ");
+			System.out.printf("|%80s%-20s|\n", " ", "(R) Return ->");
+			System.out.printf("+%100s+\n", "-".repeat(100));
+			System.out.print("Enter your choice: ");
+			char choice = scan.nextLine().charAt(0);
+			// scan.nextLine();
+			switch (choice) {
+				case '1': {
+					FineDAO.getInstance().displayAll();
+					break;
+				}
+				case '2': {
+					FineDAO.getInstance().displayLost();
+					break;
+				}
+				case '3': {
+					FineDAO.getInstance().displayOverdueReturn();
+					break;
+				}
+				case '4': {
+					FineDAO.getInstance().displayDamaged();
+					break;
+				}
+				case '5': {
+
+					TypeFinePage();
+					break;
+				}
+				case '6': {
+					break;
+				}
+				case 'R': {
+					return;
+				}
+				default:
+					break;
+			}
+		}
+	}
+
+	public void ReservationPage() {
+		while (true) {
+			ClearScreen.clrscr();
+			System.out.println();
+			System.out.printf("+%100s+\n", "-".repeat(100));
+			System.out.printf("|%s%60s%40s|\n", "", "LIBRARY MANAGEMENT SYSTEM", "");
+			System.out.printf("+%100s+\n", "-".repeat(100));
+			System.out.printf("|%3s%-10s%-10s%-12s%-10s%-10s%45s|\n", " ", "(H)HOME", "(B)BOOKS", "(P)PAPERS",
+					"(A)ABOUT", "(E)HELP", "");
+			System.out.printf("+%100s+\n", "-".repeat(100));
+			System.out.printf("|%100s|\n", " ".repeat(100));
+			System.out.printf("|%100s|\n", " ".repeat(100));
+			System.out.printf("|%100s|\n", " ".repeat(100));
+			System.out.printf("|%10s%32s%16s%32s%10s|\n", " ", "+" + "-".repeat(30) + "+", " ",
+					"+" + "-".repeat(30) + "+", " ");
+			System.out.printf("|%10s%-7s%-24s%s%16s%-7s%-24s%s%10s|\n", " ", "|", "(1) All reservation", "|", " ",
 					"|", "(2) Find by date", "|", " ");
 			System.out.printf("|%10s%32s%16s%32s%10s|\n", " ", "+" + "-".repeat(30) + "+", " ",
 					"+" + "-".repeat(30) + "+", " ");
@@ -846,8 +1096,7 @@ public class FeatureImp implements Feature {
 
 	public void HomePage() {
 		while (true) {
-			System.out.print("\033[H\033[2J");
-			System.out.flush();
+			ClearScreen.clrscr();
 			System.out.println();
 			System.out.printf("+%100s+\n", "-".repeat(100));
 			System.out.printf("|%s%60s%40s|\n", "", "LIBRARY MANAGEMENT SYSTEM", "");
@@ -872,8 +1121,8 @@ public class FeatureImp implements Feature {
 					"+" + "-".repeat(30) + "+", " ");
 			System.out.printf("|%10s%32s%16s%32s%10s|\n", " ", "+" + "-".repeat(30) + "+", " ",
 					"+" + "-".repeat(30) + "+", " ");
-			System.out.printf("|%10s%-11s%-20s%s%16s%-11s%-20s%s%10s|\n", " ", "|", "(5) Payment ", "|", " ",
-					"|", ". . .", "|", " ");
+			System.out.printf("|%10s%-11s%-20s%s%16s%-8s%-23s%s%10s|\n", " ", "|", "(5) Payment ", "|", " ",
+					"|", "(6) Reservation", "|", " ");
 			System.out.printf("|%10s%32s%16s%32s%10s|\n", " ", "+" + "-".repeat(30) + "+", " ",
 					"+" + "-".repeat(30) + "+", " ");
 
@@ -900,6 +1149,11 @@ public class FeatureImp implements Feature {
 					break;
 				}
 				case '5': {
+					ComingSoonPage();
+					break;
+				}
+				case '6': {
+					ReservationPage();
 					break;
 				}
 

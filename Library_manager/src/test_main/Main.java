@@ -1,5 +1,6 @@
 package test_main;
 
+
 import java.util.Scanner;
 
 import feature.FeatureImp;
@@ -11,8 +12,7 @@ public class Main {
 	
 	public static void Lmao() {
 		while (true) {
-			System.out.print("\033[H\033[2J");
-			System.out.flush();
+			ClearScreen.clrscr();
 			System.out.println();
 			System.out.printf("+%114s+\n", "-".repeat(114));
 			System.out.printf("|%s%69s%45s|\n", "", "LIBRARY MANAGEMENT SYSTEM", "");
@@ -51,6 +51,7 @@ public class Main {
 	}
 
 	
+
 
 	public static void main(String[] args) {
 
