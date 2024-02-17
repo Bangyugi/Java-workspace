@@ -8,11 +8,12 @@ import java.util.Scanner;
 
 import data_access_object.BookDAO;
 import data_access_object.FineDAO;
+import data_access_object.FinePaymentDAO;
 import data_access_object.LoanDAO;
 import data_access_object.MemberDAO;
 import database.JDBCUtil;
 import model.Account;
-import model.Reservation;
+
 import test_main.ClearScreen;
 
 public class FeatureImp implements Feature {
@@ -928,8 +929,8 @@ public class FeatureImp implements Feature {
 					break;
 				}
 				case '3': {
-					AddFinePage((int)choice - (int)'0');
-
+					AddFinePage((int) choice - (int) '0');
+				
 					break;
 				}
 				case '4': {
@@ -976,6 +977,75 @@ public class FeatureImp implements Feature {
 					"+" + "-".repeat(30) + "+", " ");
 			System.out.printf("|%10s%-7s%-24s%s%16s%-7s%-24s%s%10s|\n", " ", "|", "(3) Overdue fine", "|", " ",
 					"|", "(4) Damage fine", "|", " ");
+			System.out.printf("|%10s%32s%16s%32s%10s|\n", " ", "+" + "-".repeat(30) + "+", " ",
+					"+" + "-".repeat(30) + "+", " ");
+			System.out.printf("|%10s%32s%16s%32s%10s|\n", " ", "+" + "-".repeat(30) + "+", " ",
+					"" + "".repeat(30) + "", " ");
+			System.out.printf("|%10s%-7s%-24s%s%16s%-7s%-24s%s%10s|\n", " ", "|", "(5) Add new fine", "|", " ",
+					" ", " ", " ", " ");
+			System.out.printf("|%10s%32s%16s%32s%10s|\n", " ", "+" + "-".repeat(30) + "+", " ",
+					"" + "".repeat(30) + "", " ");
+			System.out.printf("|%80s%-20s|\n", " ", "(R) Return ->");
+			System.out.printf("+%100s+\n", "-".repeat(100));
+			System.out.print("Enter your choice: ");
+			char choice = scan.nextLine().charAt(0);
+			// scan.nextLine();
+			switch (choice) {
+				case '1': {
+					FineDAO.getInstance().displayAll();
+					break;
+				}
+				case '2': {
+					FineDAO.getInstance().displayLost();
+					break;
+				}
+				case '3': {
+					FineDAO.getInstance().displayOverdueReturn();
+					break;
+				}
+				case '4': {
+					FineDAO.getInstance().displayDamaged();
+					break;
+				}
+				case '5': {
+					TypeFinePage();
+					break;
+				}
+				case '6': {
+					break;
+				}
+				case 'R': {
+					return;
+				}
+				default:
+					break;
+			}
+		}
+	}
+	public void PaymentPage() {
+		while (true) {
+			ClearScreen.clrscr();
+			System.out.println();
+			System.out.printf("+%100s+\n", "-".repeat(100));
+			System.out.printf("|%s%60s%40s|\n", "", "LIBRARY MANAGEMENT SYSTEM", "");
+			System.out.printf("+%100s+\n", "-".repeat(100));
+			System.out.printf("|%3s%-10s%-10s%-12s%-10s%-10s%45s|\n", " ", "(H)HOME", "(B)BOOKS", "(P)PAPERS",
+					"(A)ABOUT", "(E)HELP", "");
+			System.out.printf("+%100s+\n", "-".repeat(100));
+			System.out.printf("|%100s|\n", " ".repeat(100));
+			System.out.printf("|%100s|\n", " ".repeat(100));
+			System.out.printf("|%100s|\n", " ".repeat(100));
+			System.out.printf("|%10s%32s%16s%32s%10s|\n", " ", "+" + "-".repeat(30) + "+", " ",
+					"+" + "-".repeat(30) + "+", " ");
+			System.out.printf("|%10s%-7s%-24s%s%16s%-7s%-24s%s%10s|\n", " ", "|", "(1) Show all Payment", "|",
+					" ",
+					"|", "(2) Unpaid", "|", " ");
+			System.out.printf("|%10s%32s%16s%32s%10s|\n", " ", "+" + "-".repeat(30) + "+", " ",
+					"+" + "-".repeat(30) + "+", " ");
+			System.out.printf("|%10s%32s%16s%32s%10s|\n", " ", "+" + "-".repeat(30) + "+", " ",
+					"+" + "-".repeat(30) + "+", " ");
+			System.out.printf("|%10s%-7s%-24s%s%16s%-7s%-24s%s%10s|\n", " ", "|", "(3) Already paid", "|", " ",
+					"|", "(4) ", "|", " ");
 			System.out.printf("|%10s%32s%16s%32s%10s|\n", " ", "+" + "-".repeat(30) + "+", " ",
 					"+" + "-".repeat(30) + "+", " ");
 			System.out.printf("|%10s%32s%16s%32s%10s|\n", " ", "+" + "-".repeat(30) + "+", " ",
@@ -1149,11 +1219,11 @@ public class FeatureImp implements Feature {
 					break;
 				}
 				case '5': {
-					ComingSoonPage();
+					FinePaymentDAO.getInstance().displayAll();
 					break;
 				}
 				case '6': {
-					ReservationPage();
+					ComingSoonPage();
 					break;
 				}
 

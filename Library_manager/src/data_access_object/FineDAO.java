@@ -127,20 +127,22 @@ public class FineDAO {
                 System.out.flush();
                 System.out.println();
                 System.out.printf("+%112s+\n", "-".repeat(112));
-                System.out.printf("|%s%45s%-67s|\n", "","", "LIBRARY MANAGEMENT SYSTEM");
+                System.out.printf("|%s%45s%-67s|\n", "", "", "LIBRARY MANAGEMENT SYSTEM");
                 System.out.printf("+%112s+\n", "-".repeat(112));
                 System.out.printf("|%3s%-10s%-10s%-12s%-10s%-10s%57s|\n", " ", "(H)HOME", "(B)BOOKS", "(P)PAPERS",
                         "(A)ABOUT", "(E)HELP", "");
                 System.out.printf("+%112s+\n", "-".repeat(112));
                 System.out.printf("|%112s|\n", " ".repeat(112));
-                System.out.printf("|%3s+%-17s+%-17s+%-17s+%-17s+%-32s+%3s|\n", " ", "-".repeat(17), "-".repeat(17),"-".repeat(17),
+                System.out.printf("|%3s+%-17s+%-17s+%-17s+%-17s+%-32s+%3s|\n", " ", "-".repeat(17), "-".repeat(17),
+                        "-".repeat(17),
                         "-".repeat(17),
                         "-".repeat(32), "");
                 System.out.printf("|%3s| %-15s | %-15s | %-15s | %-15s | %-30s |%3s|\n", " ", "Member's id",
                         "Loan's id",
                         "Fine date", "Fine amount",
                         "Type of fine", "");
-                System.out.printf("|%3s+%-17s+%-17s+%-17s+%-17s+%-32s+%3s|\n", " ", "-".repeat(17), "-".repeat(17),"-".repeat(17),
+                System.out.printf("|%3s+%-17s+%-17s+%-17s+%-17s+%-32s+%3s|\n", " ", "-".repeat(17), "-".repeat(17),
+                        "-".repeat(17),
                         "-".repeat(17),
                         "-".repeat(32), "");
 
@@ -155,7 +157,8 @@ public class FineDAO {
                             fineDate, fineAmount, description, " ");
 
                 }
-                System.out.printf("|%3s+%-17s+%-17s+%-17s+%-17s+%-32s+%3s|\n", " ", "-".repeat(17), "-".repeat(17),"-".repeat(17),
+                System.out.printf("|%3s+%-17s+%-17s+%-17s+%-17s+%-32s+%3s|\n", " ", "-".repeat(17), "-".repeat(17),
+                        "-".repeat(17),
                         "-".repeat(17),
                         "-".repeat(32), "");
                 System.out.printf("|%112s|\n", " ".repeat(112));
@@ -179,6 +182,7 @@ public class FineDAO {
             e.printStackTrace();
         }
     }
+
     public void displayOverdueReturn() {
         try {
             boolean flag = true;
@@ -192,20 +196,22 @@ public class FineDAO {
                 System.out.flush();
                 System.out.println();
                 System.out.printf("+%112s+\n", "-".repeat(112));
-                System.out.printf("|%s%45s%-67s|\n", "","", "LIBRARY MANAGEMENT SYSTEM");
+                System.out.printf("|%s%45s%-67s|\n", "", "", "LIBRARY MANAGEMENT SYSTEM");
                 System.out.printf("+%112s+\n", "-".repeat(112));
                 System.out.printf("|%3s%-10s%-10s%-12s%-10s%-10s%57s|\n", " ", "(H)HOME", "(B)BOOKS", "(P)PAPERS",
                         "(A)ABOUT", "(E)HELP", "");
                 System.out.printf("+%112s+\n", "-".repeat(112));
                 System.out.printf("|%112s|\n", " ".repeat(112));
-                System.out.printf("|%3s+%-17s+%-17s+%-17s+%-17s+%-32s+%3s|\n", " ", "-".repeat(17), "-".repeat(17),"-".repeat(17),
+                System.out.printf("|%3s+%-17s+%-17s+%-17s+%-17s+%-32s+%3s|\n", " ", "-".repeat(17), "-".repeat(17),
+                        "-".repeat(17),
                         "-".repeat(17),
                         "-".repeat(32), "");
                 System.out.printf("|%3s| %-15s | %-15s | %-15s | %-15s | %-30s |%3s|\n", " ", "Member's id",
                         "Loan's id",
                         "Fine date", "Fine amount",
                         "Type of fine", "");
-                System.out.printf("|%3s+%-17s+%-17s+%-17s+%-17s+%-32s+%3s|\n", " ", "-".repeat(17), "-".repeat(17),"-".repeat(17),
+                System.out.printf("|%3s+%-17s+%-17s+%-17s+%-17s+%-32s+%3s|\n", " ", "-".repeat(17), "-".repeat(17),
+                        "-".repeat(17),
                         "-".repeat(17),
                         "-".repeat(32), "");
 
@@ -220,7 +226,8 @@ public class FineDAO {
                             fineDate, fineAmount, description, " ");
 
                 }
-                System.out.printf("|%3s+%-17s+%-17s+%-17s+%-17s+%-32s+%3s|\n", " ", "-".repeat(17), "-".repeat(17),"-".repeat(17),
+                System.out.printf("|%3s+%-17s+%-17s+%-17s+%-17s+%-32s+%3s|\n", " ", "-".repeat(17), "-".repeat(17),
+                        "-".repeat(17),
                         "-".repeat(17),
                         "-".repeat(32), "");
                 System.out.printf("|%112s|\n", " ".repeat(112));
@@ -244,6 +251,7 @@ public class FineDAO {
             e.printStackTrace();
         }
     }
+
     public void displayLost() {
         try {
             boolean flag = true;
@@ -257,20 +265,22 @@ public class FineDAO {
                 System.out.flush();
                 System.out.println();
                 System.out.printf("+%112s+\n", "-".repeat(112));
-                System.out.printf("|%s%45s%-67s|\n", "","", "LIBRARY MANAGEMENT SYSTEM");
+                System.out.printf("|%s%45s%-67s|\n", "", "", "LIBRARY MANAGEMENT SYSTEM");
                 System.out.printf("+%112s+\n", "-".repeat(112));
                 System.out.printf("|%3s%-10s%-10s%-12s%-10s%-10s%57s|\n", " ", "(H)HOME", "(B)BOOKS", "(P)PAPERS",
                         "(A)ABOUT", "(E)HELP", "");
                 System.out.printf("+%112s+\n", "-".repeat(112));
                 System.out.printf("|%112s|\n", " ".repeat(112));
-                System.out.printf("|%3s+%-17s+%-17s+%-17s+%-17s+%-32s+%3s|\n", " ", "-".repeat(17), "-".repeat(17),"-".repeat(17),
+                System.out.printf("|%3s+%-17s+%-17s+%-17s+%-17s+%-32s+%3s|\n", " ", "-".repeat(17), "-".repeat(17),
+                        "-".repeat(17),
                         "-".repeat(17),
                         "-".repeat(32), "");
                 System.out.printf("|%3s| %-15s | %-15s | %-15s | %-15s | %-30s |%3s|\n", " ", "Member's id",
                         "Loan's id",
                         "Fine date", "Fine amount",
                         "Type of fine", "");
-                System.out.printf("|%3s+%-17s+%-17s+%-17s+%-17s+%-32s+%3s|\n", " ", "-".repeat(17), "-".repeat(17),"-".repeat(17),
+                System.out.printf("|%3s+%-17s+%-17s+%-17s+%-17s+%-32s+%3s|\n", " ", "-".repeat(17), "-".repeat(17),
+                        "-".repeat(17),
                         "-".repeat(17),
                         "-".repeat(32), "");
 
@@ -285,7 +295,8 @@ public class FineDAO {
                             fineDate, fineAmount, description, " ");
 
                 }
-                System.out.printf("|%3s+%-17s+%-17s+%-17s+%-17s+%-32s+%3s|\n", " ", "-".repeat(17), "-".repeat(17),"-".repeat(17),
+                System.out.printf("|%3s+%-17s+%-17s+%-17s+%-17s+%-32s+%3s|\n", " ", "-".repeat(17), "-".repeat(17),
+                        "-".repeat(17),
                         "-".repeat(17),
                         "-".repeat(32), "");
                 System.out.printf("|%112s|\n", " ".repeat(112));
@@ -309,6 +320,7 @@ public class FineDAO {
             e.printStackTrace();
         }
     }
+
     public void displayDamaged() {
         try {
             boolean flag = true;
@@ -322,20 +334,22 @@ public class FineDAO {
                 System.out.flush();
                 System.out.println();
                 System.out.printf("+%112s+\n", "-".repeat(112));
-                System.out.printf("|%s%45s%-67s|\n", "","", "LIBRARY MANAGEMENT SYSTEM");
+                System.out.printf("|%s%45s%-67s|\n", "", "", "LIBRARY MANAGEMENT SYSTEM");
                 System.out.printf("+%112s+\n", "-".repeat(112));
                 System.out.printf("|%3s%-10s%-10s%-12s%-10s%-10s%57s|\n", " ", "(H)HOME", "(B)BOOKS", "(P)PAPERS",
                         "(A)ABOUT", "(E)HELP", "");
                 System.out.printf("+%112s+\n", "-".repeat(112));
                 System.out.printf("|%112s|\n", " ".repeat(112));
-                System.out.printf("|%3s+%-17s+%-17s+%-17s+%-17s+%-32s+%3s|\n", " ", "-".repeat(17), "-".repeat(17),"-".repeat(17),
+                System.out.printf("|%3s+%-17s+%-17s+%-17s+%-17s+%-32s+%3s|\n", " ", "-".repeat(17), "-".repeat(17),
+                        "-".repeat(17),
                         "-".repeat(17),
                         "-".repeat(32), "");
                 System.out.printf("|%3s| %-15s | %-15s | %-15s | %-15s | %-30s |%3s|\n", " ", "Member's id",
                         "Loan's id",
                         "Fine date", "Fine amount",
                         "Type of fine", "");
-                System.out.printf("|%3s+%-17s+%-17s+%-17s+%-17s+%-32s+%3s|\n", " ", "-".repeat(17), "-".repeat(17),"-".repeat(17),
+                System.out.printf("|%3s+%-17s+%-17s+%-17s+%-17s+%-32s+%3s|\n", " ", "-".repeat(17), "-".repeat(17),
+                        "-".repeat(17),
                         "-".repeat(17),
                         "-".repeat(32), "");
 
@@ -350,7 +364,8 @@ public class FineDAO {
                             fineDate, fineAmount, description, " ");
 
                 }
-                System.out.printf("|%3s+%-17s+%-17s+%-17s+%-17s+%-32s+%3s|\n", " ", "-".repeat(17), "-".repeat(17),"-".repeat(17),
+                System.out.printf("|%3s+%-17s+%-17s+%-17s+%-17s+%-32s+%3s|\n", " ", "-".repeat(17), "-".repeat(17),
+                        "-".repeat(17),
                         "-".repeat(17),
                         "-".repeat(32), "");
                 System.out.printf("|%112s|\n", " ".repeat(112));

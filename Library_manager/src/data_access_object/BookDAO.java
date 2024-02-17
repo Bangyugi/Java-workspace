@@ -132,40 +132,40 @@ public class BookDAO {
                 System.out.print("\033[H\033[2J");
                 System.out.flush();
                 System.out.println();
-                System.out.printf("+%126s+\n", "-".repeat(126));
-                System.out.printf("|%s%70s%56s|\n", "", "LIBRARY MANAGEMENT SYSTEM", "");
-                System.out.printf("+%126s+\n", "-".repeat(126));
-                System.out.printf("|%3s%-10s%-10s%-12s%-10s%-10s%71s|\n", " ", "(H)HOME", "(B)BOOKS", "(P)PAPERS",
+                System.out.printf("+%135s+\n", "-".repeat(135));
+                System.out.printf("|%s%72s%63s|\n", "", "LIBRARY MANAGEMENT SYSTEM", "");
+                System.out.printf("+%135s+\n", "-".repeat(135));
+                System.out.printf("|%3s%-10s%-10s%-12s%-10s%-10s%80s|\n", " ", "(H)HOME", "(B)BOOKS", "(P)PAPERS",
                         "(A)ABOUT", "(E)HELP", "");
-                System.out.printf("+%126s+\n", "-".repeat(126));
-                System.out.printf("|%126s|\n", " ".repeat(126));
-                System.out.printf("|%3s+%-53s+%-28s+%-22s+%-12s+%3s|\n", " ", "-".repeat(53), "-".repeat(28),
+                System.out.printf("+%135s+\n", "-".repeat(135));
+                System.out.printf("|%135s|\n", " ".repeat(135));
+                System.out.printf("|%3s+%10s+%-53s+%-28s+%-22s+%-10s+%3s|\n", " ","-".repeat(10), "-".repeat(53), "-".repeat(28),
                         "-".repeat(22),
-                        "-".repeat(12), "");
-                System.out.printf("|%3s| %-51s | %-26s | %-20s | %-10s |%3s|\n", " ", "title", "Author", "Category",
+                        "-".repeat(10), "");
+                System.out.printf("|%3s| %-8s | %-51s | %-26s | %-20s | %-8s |%3s|\n", " ","ID", "Title", "Author", "Category",
                         "Copies", "");
-                System.out.printf("|%3s+%-53s+%-28s+%-22s+%-12s+%3s|\n", " ", "-".repeat(53), "-".repeat(28),
+                System.out.printf("|%3s+%10s+%-53s+%-28s+%-22s+%-10s+%3s|\n", " ","-".repeat(10), "-".repeat(53), "-".repeat(28),
                         "-".repeat(22),
-                        "-".repeat(12), "");
+                        "-".repeat(10), "");
 
                 while (rs.next()) {
-
+                    int id = rs.getInt("Book_id");
                     String title = rs.getString("title");
                     String categoryName = rs.getString("category_name");
                     int copies = rs.getInt("copies_owned");
                     String fName = rs.getString("fname");
                     String lName = rs.getString("lname");
-                    System.out.printf("|%3s| %-51s | %-26s | %-20s | %-10s |%3s|\n", " ", title, fName + " " + lName,
+                    System.out.printf("|%3s| %-8s | %-51s | %-26s | %-20s | %-8s |%3s|\n", " ",id, title, fName + " " + lName,
                             categoryName, copies, "");
 
                 }
-                System.out.printf("|%3s+%-53s+%-28s+%-22s+%-12s+%3s|\n", " ", "-".repeat(53), "-".repeat(28),
+                System.out.printf("|%3s+%10s+%-53s+%-28s+%-22s+%-10s+%3s|\n", " ","-".repeat(10), "-".repeat(53), "-".repeat(28),
                         "-".repeat(22),
-                        "-".repeat(12), "");
-                System.out.printf("|%126s|\n", " ".repeat(126));
-                System.out.printf("|%126s|\n", " ".repeat(126));
-                System.out.printf("|%106s%-20s|\n", " ", "(R) Return ->");
-                System.out.printf("+%126s+\n", "-".repeat(126));
+                        "-".repeat(10), "");
+                System.out.printf("|%135s|\n", " ".repeat(135));
+                System.out.printf("|%135s|\n", " ".repeat(135));
+                System.out.printf("|%115s%-20s|\n", " ", "(R) Return ->");
+                System.out.printf("+%135s+\n", "-".repeat(135));
                 JDBCUtil.closeConnection(connection);
                 System.out.print("Enter your choice: ");
                 char choice = scan.nextLine().charAt(0);

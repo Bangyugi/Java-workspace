@@ -3,28 +3,45 @@ package model;
 import java.sql.Date;
 
 public class FinePayment {
-	String member;
+	int id;
+	int memberID;
+	String note;
 	Date paymentDate;
 	int paymenrAmount;
 
 	public FinePayment() {
-		super();
 	}
 
-	public FinePayment(String member, Date paymentDate, int paymenrAmount) {
-		super();
-		this.member = member;
+	public FinePayment(int id, int memberID, String note, Date paymentDate, int paymenrAmount) {
+		this.id = id;
+		this.memberID = memberID;
+		this.note = note;
 		this.paymentDate = paymentDate;
 		this.paymenrAmount = paymenrAmount;
 	}
 
-
-	public String getMember() {
-		return member;
+	public int getId() {
+		return id;
 	}
 
-	public void setMember(String member) {
-		this.member = member;
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public int getMemberID() {
+		return memberID;
+	}
+
+	public void setMemberID(int memberID) {
+		this.memberID = memberID;
+	}
+
+	public String getNote() {
+		return note;
+	}
+
+	public void setNote(String note) {
+		this.note = note;
 	}
 
 	public Date getPaymentDate() {
@@ -43,11 +60,9 @@ public class FinePayment {
 		this.paymenrAmount = paymenrAmount;
 	}
 
-	@Override
-	public String toString() {
-		return "FinePayment [member=" + member + ", paymentDate=" + paymentDate + ", paymenrAmount="
-				+ paymenrAmount + "]";
-	}
+	
 
 	
 }
+
+
